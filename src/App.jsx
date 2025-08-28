@@ -173,42 +173,7 @@ export default function App() {
           </section>
         </main>
       </div>
-      <div style={{width:80,height:'100vh',background:'linear-gradient(120deg,#6366f1 60%,#818cf8 100%)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',gap:16,padding:'12px 0',overflowY:'auto',borderLeft:'2px solid #e0e7ff',boxShadow:'-2px 0 8px rgba(99,102,241,0.08)',position:'relative',
-        ...(window.innerWidth < 700 ? {display:'none'} : {})
-      }}>
-        {/* VS Code */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" style={{width:48,height:48}} />
-        {/* IntelliJ IDEA */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" alt="IntelliJ IDEA" style={{width:48,height:48}} />
-        {/* PyCharm */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" alt="PyCharm" style={{width:48,height:48}} />
-        {/* Android Studio */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio" style={{width:48,height:48}} />
-        {/* Eclipse */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" alt="Eclipse" style={{width:48,height:48}} />
-        {/* NetBeans */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netbeans/netbeans-original.svg" alt="NetBeans" style={{width:48,height:48}} />
-        {/* Xcode */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg" alt="Xcode" style={{width:48,height:48}} />
-        {/* Visual Studio */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio" style={{width:48,height:48}} />
-        {/* Git */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" style={{width:48,height:48}} />
-        {/* GitHub */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style={{width:48,height:48,background:'#fff',borderRadius:8}} />
-        {/* Docker */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" style={{width:48,height:48}} />
-        {/* Jira */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" alt="Jira" style={{width:48,height:48}} />
-        {/* Azure */}
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" style={{width:48,height:48}} />
-        {/* Colorful dotted line on the right white space */}
-        <div style={{position:'absolute',top:0,right:-24,width:24,height:'100vh',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',pointerEvents:'none'}}>
-          {Array.from({length:16}).map((_,i) => (
-            <div key={i} style={{width:12,height:12,borderRadius:'50%',margin:'8px 0',background:`hsl(${i*24},80%,60%)`,boxShadow:'0 0 4px rgba(0,0,0,0.08)'}}></div>
-          ))}
-        </div>
-      </div>
+  {/* Removed right panel with IDE icons and dotted line for mobile compatibility */}
     </div>
   );
 }
