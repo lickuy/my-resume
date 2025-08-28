@@ -173,7 +173,9 @@ export default function App() {
           </section>
         </main>
       </div>
-      <div style={{width:80,height:'100vh',background:'linear-gradient(120deg,#6366f1 60%,#818cf8 100%)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',gap:16,padding:'12px 0',overflowY:'auto',borderLeft:'2px solid #e0e7ff',boxShadow:'-2px 0 8px rgba(99,102,241,0.08)',position:'relative'}}>
+      <div style={{width:80,height:'100vh',background:'linear-gradient(120deg,#6366f1 60%,#818cf8 100%)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',gap:16,padding:'12px 0',overflowY:'auto',borderLeft:'2px solid #e0e7ff',boxShadow:'-2px 0 8px rgba(99,102,241,0.08)',position:'relative',
+        ...(window.innerWidth < 700 ? {display:'none'} : {})
+      }}>
         {/* VS Code */}
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" style={{width:48,height:48}} />
         {/* IntelliJ IDEA */}
