@@ -1,68 +1,108 @@
 import profilePic from "./assets/img/Jop.PP.jpg";
 export default function App() {
-  const data = {
-    name: "DICK KHOSA",
-    role: "SOFTWARE ENGINEER",
-    address: "7106 NONYANI STREET, JHB, GAUTENG, 1685",
-    email: "GDICKB101@GMAIL.COM",
-    phone: "0792952119",
-    objective:
-      "Dedicated and detail-oriented Software Developer with over Three years of experience in designing, developing, and maintaining software applications. Proficient in multiple programming languages and frameworks with a strong foundation in software engineering principles. Adept at collaborating with cross-functional teams to deliver high-quality software solutions.",
-    skills: [
-      "Java", "Python", "JavaScript", "C#", "SQL", "Dart",
-      "React", "Angular", "Spring Boot", "Flutter", "Node.js",
-      "MySQL", "PostgreSQL", "MongoDB", "SQL Server",
-      "Git", "Docker", "Jenkins", "Azure", "Onedev", "Jira", "Aris",
-      "Agile", "Scrum", "SDLC",
-      "RESTful APIs", "Microservices", "Unit Testing", "Debugging"
-    ],
-    experience: [
-      {
-        company: "MYSMARTCASH",
-        role: "Software Engineer",
-        period: "Jan 2024 - Present",
-        bullets: [
-          "Developed, Designed, and maintained critical software components within the Microsoft ecosystem.",
-          "Collaborated on the development of microservices and Rest APIs.",
-          "Contributed to adopting Microsoft SQL Server for efficient data management and analysis, ensuring robust performance and reliability.",
-          "Leveraged Microsoft Azure DevOps and Git for version control and efficient code collaboration, facilitating seamless teamwork and streamlined development processes."
-        ]
-      },
-      {
-        company: "HASSEM PRAG",
-        role: "Full-stack web developer",
-        period: "Oct 2022 – Jan 2024",
-        bullets: [
-          "Developed and maintained web applications using Flutter NextJs frameworks (Dart, React) and backend services with Node.js and Spring Boot.",
-          "Collaborated with cross-functional teams to gather requirements and design software solutions, resulting in a 40% increase in project delivery speed.",
-          "Implemented RESTful APIs and integrated third-party services to enhance application functionality."
-        ]
-      },
-      {
-        company: "MECER INTER ED",
-        role: "Software Developer Trainee",
-        period: "Feb 2022 - Sep 2022",
-        bullets: []
-      }
-    ],
-    education: [
-      {
-        school: "VAAL UNIVERSITY OF TECHNOLOGY",
-        credential: "N Dip Computer Engineering",
-        details: "Studied Computer Systems Engineering, which combines coursework in IT and Electronics, including web development, database management, and software engineering"
-      }
-    ]
+  // Responsive layout: stack sidebar above main on small screens
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 700 : false;
+  const pageStyle = {
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    width: '100vw',
+    minHeight: '100vh',
+    background: 'linear-gradient(120deg, #f8fafc 60%, #e0e7ff 100%)',
+    position: 'relative',
+    alignItems: isMobile ? 'stretch' : 'center',
+    justifyContent: 'center',
   };
+  const containerStyle = {
+    ...styles.container,
+    maxWidth: 1100,
+    width: '100%',
+    flexDirection: isMobile ? 'column' : 'row',
+    minHeight: isMobile ? 'auto' : 680,
+    borderRadius: isMobile ? 0 : 18,
+    boxShadow: isMobile ? 'none' : styles.container.boxShadow,
+  };
+  const sidebarStyle = {
+    ...styles.sidebar,
+    width: isMobile ? '100%' : 280,
+    padding: isMobile ? '24px 12px' : '40px 28px',
+    borderRadius: isMobile ? '0 0 18px 18px' : '18px 0 0 18px',
+  };
+  const mainStyle = {
+    ...styles.main,
+    padding: isMobile ? '24px 12px' : '40px 38px',
+  };
+  // Simple SVG icons
+  const MailIcon = () => <span style={styles.contactIcon}>&#9993;</span>;
+  const PhoneIcon = () => <span style={styles.contactIcon}>&#128222;</span>;
+  const LocationIcon = () => <span style={styles.contactIcon}>&#128205;</span>;
 
-  const styles = {
-    page: {
-      fontFamily: "Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif",
-      background: "linear-gradient(120deg, #f8fafc 60%, #e0e7ff 100%)",
-      minHeight: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    },
+  return (
+    <div style={pageStyle}>
+      <div style={containerStyle}>
+        <aside style={sidebarStyle}>
+          <img src={profilePic} alt="Profile" style={styles.photo} />
+          <div style={styles.name}>{data.name}</div>
+          <div style={styles.role}>{data.role}</div>
+          <div style={styles.contact}><LocationIcon />{data.address}</div>
+          <div style={styles.contact}><MailIcon /><a href={`mailto:${data.email}`} style={{color:'#fff',textDecoration:'underline'}}>{data.email}</a></div>
+          <div style={styles.contact}><PhoneIcon />{data.phone}</div>
+          <a href="https://github.com/lickuy/dickKhosa" target="_blank" rel="noopener" style={{color:'#fff',textDecoration:'underline',marginTop:10,fontWeight:600,fontSize:15}}>GitHub Profile</a>
+          <a href="https://www.linkedin.com/in/dick-khosa/" target="_blank" rel="noopener" style={{color:'#fff',textDecoration:'underline',marginTop:6,fontWeight:600,fontSize:15}}>LinkedIn Profile</a>
+        </aside>
+        <main style={mainStyle}>
+          <section style={styles.section}>
+            <h2 style={styles.h2}>Objective</h2>
+            <p style={styles.text}>{data.objective}</p>
+          </section>
+          <section style={styles.section}>
+            <h2 style={styles.h2}>Skills & Abilities</h2>
+            <ul style={styles.listRow}>
+              {data.skills.map((s) => (
+                <li key={s} style={styles.pill}>{s}</li>
+              ))}
+            </ul>
+          </section>
+          <section style={styles.section}>
+            <h2 style={styles.h2}>Experience</h2>
+            {data.experience.map((e) => (
+              <div key={e.company + e.role} style={styles.card}>
+                <h3 style={styles.h3}>{e.role} — {e.company}</h3>
+                <p style={styles.text}><strong>{e.period}</strong></p>
+                {e.bullets.length > 0 && (
+                  <ul style={styles.listCol}>
+                    {e.bullets.map((b, i) => <li key={i} style={styles.text}>{b}</li>)}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </section>
+          <section style={styles.section}>
+            <h2 style={styles.h2}>Education</h2>
+            {data.education.map((ed) => (
+              <div key={ed.school} style={styles.card}>
+                <h3 style={styles.h3}>{ed.school}</h3>
+                <p style={styles.text}>{ed.credential}</p>
+                <p style={styles.text}>{ed.details}</p>
+              </div>
+            ))}
+          </section>
+          <section style={styles.section}>
+            <h2 style={styles.h2}>References</h2>
+            <p style={styles.text}>Available Upon Request.</p>
+          </section>
+        </main>
+      </div>
+    </div>
+                </div>
+              ))}
+            </section>
+            <section style={styles.section}>
+              <h2 style={styles.h2}>References</h2>
+              <p style={styles.text}>Available Upon Request.</p>
+            </section>
+          </main>
+        </div>
+      </div>
     container: {
       display: "flex",
       background: "#fff",
